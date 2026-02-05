@@ -1,0 +1,79 @@
+TQA Ticket Quality Audit Tool - Setup Instructions
+==================================================
+
+1. Prerequisites
+----------------
+- Windows OS
+- Python 3.x installed (https://www.python.org/)
+- Internet connection (for first-time dependency installation)
+
+2. Installation Steps
+---------------------
+1. Download and extract all files to a folder (e.g., `TQA_glob`).
+2. Double-click `TQA_Install.bat` to install Python dependencies:
+   - This will:
+     - Check for Python 3.x
+     - Create a virtual environment (`.venv`)
+     - Install all required packages from `requirements.txt`
+   - If Python is not found, install it from the official website and rerun the installer.
+3. Wait for the installation to complete. The script will notify you when done.
+
+3. Running the Tool
+-------------------
+1. Double-click `Run_TQA.bat` to start the application.
+   - This will:
+     - Activate the virtual environment
+     - Launch the Streamlit web app (`app.py`)
+     - The tool will open in your default web browser. If not, open the link shown in the terminal.
+2. To open the project in VS Code, double-click `openeditor.bat`.
+
+4. File Structure
+-----------------
+- `app.py`                : Main Streamlit web application
+- `logic.py`              : Core processing and validation logic
+- `requirements.txt`      : Python dependencies
+- `TQA_Install.bat`       : One-click installer for dependencies
+- `Run_TQA.bat`           : One-click launcher for the tool
+- `openeditor.bat`        : Opens the folder in VS Code
+- `*.xlsx`                : Mapping/configuration Excel files
+
+5. Troubleshooting
+------------------
+- If you see a Python not found error, install Python 3.x and rerun `TQA_Install.bat`.
+- If dependencies fail to install, check your internet connection and rerun the installer.
+- For any other issues, review the terminal output for error messages.
+
+
+TQA Tool User Guide
+===================
+
+1. Overview
+-----------
+The TQA (Ticket Quality Audit) Tool is a Streamlit-based dashboard for auditing and analyzing ticket quality across towers, applications, and associates. It provides automated scoring, interactive dashboards, and exportable reports.
+
+2. How to Use
+-------------
+1. Launch the tool using `Run_TQA.bat`.
+2. In the web interface:
+   - Download the Excel template using the **Download Template** button at the top of the page. This template includes all required columns and sample data.
+   - Review the embedded instructions in the template file for correct data entry.
+   - Upload your ticket data Excel file (use the template format).
+   - Select validation rules, thresholds, and weights as needed.
+   - Click to process and view results.
+   - Explore dashboards for associate, tower, and application performance.
+   - Download the audit results as an Excel file.
+
+3. Key Features
+---------------
+- Smart Excel template generation
+- Automated quality scoring (21+ criteria)
+- Customizable weights and thresholds
+- Real-time interactive dashboards
+- Color-coded performance indicators
+- Export results to Excel
+
+4. Advanced
+-----------
+- Update mapping/configuration Excel files as needed for your environment.
+
+For further help, refer to the in-app About section or contact your support team.

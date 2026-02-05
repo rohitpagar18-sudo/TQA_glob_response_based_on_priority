@@ -1,0 +1,7 @@
+plotly
+openpyxl
+pandas
+requests
+numpy
+streamlit==1.47.0
+streamlit-echarts
