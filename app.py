@@ -405,26 +405,26 @@ def generate_enhanced_template():
     "        - S: 2-2-1 Check is not followed",
     "        - T: 3-2-1 Check is not followed",
     "",
-#     "30. Work Notes Updated Regularly",
-#     "    • Required column: Age, Comments and Work notes",
-# "        • If the work note is recent (< 7 days) → it's automatically marked as Pass.",
-# "        • If it's older (≥ 7 days) → it goes through a Three Strike Rule check function to decide Pass/Fail.",
-# "        • If the age is missing or invalid → it's marked as Fail.",
-# "        • The result is stored in the output and used for reporting.",
-# " • Three Strike Rule check fuction Explained below:",
-# "      • The function checks the ticket's age and comments to see if reminders were sent as per the escalation policy.",
-#         """"If Age is missing or 'None' → mark as "Fail"."
-#         If Age < 3 → mark as "Pass" (no reminder needed yet).
+    "30. Work Notes Updated Regularly",
+    "    • Required column: Age, Comments and Work notes",
+"        • If the work note is recent (< 7 days) → it's automatically marked as Pass.",
+"        • If it's older (≥ 7 days) → it goes through a Three Strike Rule check function to decide Pass/Fail.",
+"        • If the age is missing or invalid → it's marked as Fail.",
+"        • The result is stored in the output and used for reporting.",
+" • Three Strike Rule check fuction Explained below:",
+"      • The function checks the ticket's age and comments to see if reminders were sent as per the escalation policy.",
+        """"If Age is missing or 'None' → mark as "Fail"."
+        If Age < 3 → mark as "Pass" (no reminder needed yet).
  
-#         Merge 'Comments and Work notes' and 'Additional comments' into one string.
+        Merge 'Comments and Work notes' and 'Additional comments' into one string.
  
-#         If combined comment text is empty → mark as "Fail".
-#         Select reminder patterns based on age:
+        If combined comment text is empty → mark as "Fail".
+        Select reminder patterns based on age:
  
-#         Age 3–5 → check for first reminder.
-#         Age 6–7 → check for first + second reminders.
-#         Age > 7 → check for final reminder.
-#         Pattern matching:
+        Age 3–5 → check for first reminder.
+        Age 6–7 → check for first + second reminders.
+        Age > 7 → check for final reminder.
+        Pattern matching:
  
 #         Use regex to search for reminder phrases in the combined comment text.
 #         If any match is found → "Pass", else → "Fail"."""
@@ -490,7 +490,7 @@ all_rules = [
     "Related records tagged?", "Ticket Ageing Check", "Reassignment check?",
     "Has Attachments","Password_detected?",
     "Priority Validation", "Category Validation", "Right Pending Justification Usage",
-    "Closed with User Confirmation?", #"Work Notes Updated Regularly",
+    "Closed with User Confirmation?", "Work Notes Updated Regularly",
     "Ticket Updated Within Business Days", "Process Adherence Violation Check",
     "3 Strike rule check(escalation policy check for Remainder)",
     "Work Note Format & Content Check", "3 Strike Check(1-1-1)","3 Strike Check(2-2-1)", "3 Strike Check(3-2-1)","Acknowledgment notes recorded in Worklog?",
@@ -796,22 +796,22 @@ if "Is the resolution summary and closure notes updated as per appropriate templ
             - Pass if full cleaned text matches the template
             """)
 
-# if "Work Notes Updated Regularly" in selected_rules:
-#     col1, col2 = st.columns([3, 1])
-#     with col1:
-#         thresholds["Work Notes Updated Regularly"] = st.number_input("Enter Work Notes Updated Regularly threshold: ", value=7, min_value=1, help="ℹ️ Set the number of days after which work notes are considered outdated.")
-#     with col2:
-#         with st.expander("Logic"):
-#             st.write("""
-#             **Work Notes Updated Regularly Logic:**
+if "Work Notes Updated Regularly" in selected_rules:
+    col1, col2 = st.columns([3, 1])
+    with col1:
+        thresholds["Work Notes Updated Regularly"] = st.number_input("Enter Work Notes Updated Regularly threshold: ", value=7, min_value=1, help="ℹ️ Set the number of days after which work notes are considered outdated.")
+    with col2:
+        with st.expander("Logic"):
+            st.write("""
+            **Work Notes Updated Regularly Logic:**
             
-#             Required Columns: Age, Comments and Work notes, Additional comments.
+            Required Columns: Age, Comments and Work notes, Additional comments.
                      
-#             - ✅ If the **Age** of work notes is **less than the threshold**, it's marked as **Pass**.
-#             - ❌ If the value is **missing** or `'None'`, it's marked as **Fail**.
-#             - ⚠️ If the **Age is equal to or more than the threshold**, a **Three-Strike Rule** is applied to decide **Pass/Fail**.
+            - ✅ If the **Age** of work notes is **less than the threshold**, it's marked as **Pass**.
+            - ❌ If the value is **missing** or `'None'`, it's marked as **Fail**.
+            - ⚠️ If the **Age is equal to or more than the threshold**, a **Three-Strike Rule** is applied to decide **Pass/Fail**.
 
-# """)
+""")
 
 
 # weighted scoring for your validation rules with pass fail criteria only. not for Ticket Number,Assigned to, Application, Tower, Observations1,Observations2 etc.
@@ -834,7 +834,7 @@ scoring_rules = [
     "Right Pending Justification Usage",
     "Password_detected?",
     "Closed with User Confirmation?",
-    #"Work Notes Updated Regularly",
+    "Work Notes Updated Regularly",
     "Ticket Updated Within Business Days",
     "Process Adherence Violation Check",
     "3 Strike rule check(escalation policy check for Remainder)",
@@ -1162,7 +1162,7 @@ if uploaded_file:
         "Category Validation": ["Description", "Category", "Subcategory"],
         "Password_detected?": ["Comments and Work notes", "Additional comments"],
         "Closed with User Confirmation?": ["Comments and Work notes", "Additional comments"],
-        #"Work Notes Updated Regularly": ["Age", "Comments and Work notes", "Additional comments"],
+        "Work Notes Updated Regularly": ["Age", "Comments and Work notes", "Additional comments"],
         "Ticket Updated Within Business Days": ["Opened", "Comments and Work notes", "Additional comments"],
         "Process Adherence Violation Check": ["Opened", "Closed", "Comments and Work notes", "Additional comments"],
         "3 Strike Check(1-1-1)": ["Age", "Comments and Work notes", "Additional comments"],

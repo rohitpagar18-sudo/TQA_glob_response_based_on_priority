@@ -1923,35 +1923,35 @@ def process_uploaded_file(input_df, selected_rules, thresholds, weights):
 
 
         # Work Notes Updated Regularly
-    # if "Work Notes Updated Regularly" in selected_rules:
-    #     required_columns = ["Age", "Comments and Work notes", "Additional comments"]
-    #     missing_cols = [col for col in required_columns if col not in input_df.columns]
-    #     if missing_cols:
-    #         print(f"❌ WARNING: Missing columns {missing_cols} for Work Notes Updated Regularly validation")
-    #         print("💡 All entries will FAIL this validation")
+    if "Work Notes Updated Regularly" in selected_rules:
+        required_columns = ["Age", "Comments and Work notes", "Additional comments"]
+        missing_cols = [col for col in required_columns if col not in input_df.columns]
+        if missing_cols:
+            print(f"❌ WARNING: Missing columns {missing_cols} for Work Notes Updated Regularly validation")
+            print("💡 All entries will FAIL this validation")
             
-    #         result = ["Fail - Missing Column"] * len(input_df)
-    #         output_df['Work Notes Updated Regularly'] = result
-    #         pass_matrix.append(["Fail"] * len(input_df))
-    #     else:
-    #         status_worknotes_updated_regularly = []
-    #         threshold_val = thresholds["Work Notes Updated Regularly"]
-    #         cnt = 0
+            result = ["Fail - Missing Column"] * len(input_df)
+            output_df['Work Notes Updated Regularly'] = result
+            pass_matrix.append(["Fail"] * len(input_df))
+        else:
+            status_worknotes_updated_regularly = []
+            threshold_val = thresholds["Work Notes Updated Regularly"]
+            cnt = 0
 
-    #         for age_val in input_df['Age']:
-    #             cnt += 1
-    #             if pd.isnull(age_val) or age_val == 'None':
-    #                 status_worknotes_updated_regularly.append('Fail')
-    #                 continue
-    #             if age_val < threshold_val:
-    #                 status_worknotes_updated_regularly.append('Pass')
-    #             else:
-    #                 status_3_Strike_rule_check = three_strike_rule_check()
-    #                 strike3 = status_3_Strike_rule_check[cnt - 1]
-    #                 status_worknotes_updated_regularly.append(strike3)
+            for age_val in input_df['Age']:
+                cnt += 1
+                if pd.isnull(age_val) or age_val == 'None':
+                    status_worknotes_updated_regularly.append('Fail')
+                    continue
+                if age_val < threshold_val:
+                    status_worknotes_updated_regularly.append('Pass')
+                else:
+                    status_3_Strike_rule_check = three_strike_rule_check()
+                    strike3 = status_3_Strike_rule_check[cnt - 1]
+                    status_worknotes_updated_regularly.append(strike3)
 
-    #         output_df['Work Notes Updated Regularly'] = status_worknotes_updated_regularly
-    #         pass_matrix.append(status_worknotes_updated_regularly)
+            output_df['Work Notes Updated Regularly'] = status_worknotes_updated_regularly
+            pass_matrix.append(status_worknotes_updated_regularly)
 
     # Ticket Updated Within Business Days
     if "Ticket Updated Within Business Days" in selected_rules:
@@ -2895,7 +2895,7 @@ def process_uploaded_file(input_df, selected_rules, thresholds, weights):
         "KBA Tagged?": "KBA Tagged?",
         "Reopened ?": "Reopened?",
         "Related records tagged?": "Related records tagged?",
-        #"Work Notes Updated Regularly": "Work Notes Updated Regularly",
+        "Work Notes Updated Regularly": "Work Notes Updated Regularly",
         "Ticket Updated Within Business Days": "Ticket Updated Within Business Days",
         "Process Adherence Violation Check": "PA violation Check",
         "Work notes Length Check": "Work notes Length",
@@ -2910,7 +2910,7 @@ def process_uploaded_file(input_df, selected_rules, thresholds, weights):
         "Password_detected?": "Password Check",
         "Has Attachments": "Has Attachments",
         "Closed with User Confirmation?": "Closed with User Confirmation?",
-        #"Work Notes Updated Regularly": "Work Notes Updated Regularly",
+        "Work Notes Updated Regularly": "Work Notes Updated Regularly",
         "Ticket Updated Within Business Days": "Ticket Updated Within Business Days",
         "Process Adherence Violation Check": "PA violation Check",
         "3 Strike rule check(escalation policy check for Remainder)": "3 Strike rule remainders check",
